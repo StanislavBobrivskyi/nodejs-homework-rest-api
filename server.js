@@ -1,41 +1,29 @@
-const mongoose = require("mongoose");
+const app = require("./app");
+const { MongoClient } = require("mongodb");
 
-const dbUrl =
-  "mongodb+srv://BobrivskyiStanislav:bober237BoBer93012716511@cluster0.splryg6.mongodb.net/test?retryWrites=true&w=majority";
-
-mongoose.connect(dbUrl, {
+// Замініть <username>, <password> та <yourDatabaseName> на ваші реальні дані
+const uri =
+  "mongodb+srv://bobrivskyistanislav1:bober237BoBer93012716511@contacts.bnx4wwj.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-const db = mongoose.connection;
-
-db.on("error", (error) => {
-  console.error("Database connection error:", error);
-  process.exit(1);
-});
-
-db.once("open", () => {
-  console.log("Database connection successful");
-});
-
-// Решта коду для схеми, моделі та функцій обробки запитів залишається незмінним
-
-async function run() {
+async function startServer() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
+    // З'єднання з базою даних MongoDB
     await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
-    );
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
+    console.log("Connected to MongoDB");
+
+    // Запуск веб-сервера після успішного з'єднання з базою даних
+    app.listen(3000, () => {
+      console.log("Server running. Use our API on port: 3000");
+    });
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error.message);
+    process.exit(1);
   }
 }
-run().catch(console.dir);
-app.listen(3000, () => {
-  console.log("Server running. Use our API on port: 3000");
-});
+
+// Запуск сервера та з'єднання з MongoDB
+startServer();
