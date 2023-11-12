@@ -1,12 +1,12 @@
 {
-  "name": "hw02-express",
+  "name": "hw03-mongodb",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./server.js",
-    "start:dev": "cross-env NODE_ENV=development nodemon ./server.js",
-    "lint": "eslint **/*.js",
-    "lint:fix": "eslint --fix **/*.js"
+    "start:dev": "cross-env NODE_ENV=production nodemon ./server.js",
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint src/**/.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -18,13 +18,14 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "dotenv": "^16.3.1",
     "eslint": "7.19.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "16.0.3",
     "eslint-plugin-import": "2.25.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "5.2.0",
-    "nodemon": "2.0.15"
+    "nodemon": "^2.0.15"
   },
   "description": "Realizează un fork al acestui repozitoriu pentru a îndeplini temele de acasă (2-6). Fork-ul va crea un repozitoriu pe contul tău de pe http://github.com",
   "main": ".eslintrc.js",

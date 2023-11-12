@@ -1,13 +1,9 @@
 const app = require("./app");
 const { MongoClient } = require("mongodb");
 
-// Замініть <username>, <password> та <yourDatabaseName> на ваші реальні дані
 const uri =
   "mongodb+srv://bobrivskyistanislav1:bober237BoBer93012716511@contacts.bnx4wwj.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const client = new MongoClient(uri, {});
 
 async function startServer() {
   try {
@@ -25,5 +21,4 @@ async function startServer() {
   }
 }
 
-// Запуск сервера та з'єднання з MongoDB
 startServer();

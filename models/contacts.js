@@ -92,7 +92,7 @@
 
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/contacts-db", {
+mongoose.connect("mongodb://localhost:3000/contacts", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
